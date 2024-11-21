@@ -19,21 +19,33 @@ function Sidebar({ isExpanded }) {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/inventory">
+          <Link to="/logbook">
             <BsFillBoxFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">Inventory</span>}
+            {isExpanded && <span className="sidebar-text">Logbook</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/reports">
+          <Link to="/hazard">
             <BsFillPieChartFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">Reports</span>}
+            {isExpanded && <span className="sidebar-text">Hazard</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
           <Link to="/settings">
             <BsFillGearFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">Settings</span>}
+            {isExpanded && <span className="sidebar-text">Report</span>}
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/settings">
+            <BsFillGearFill className="sidebar-icon" />
+            {isExpanded && <span className="sidebar-text"></span>}
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/settings">
+            <BsFillGearFill className="sidebar-icon" />
+            {isExpanded && <span className="sidebar-text">ERP</span>}
           </Link>
         </li>
       </ul>

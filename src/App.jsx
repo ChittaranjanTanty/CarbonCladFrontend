@@ -4,6 +4,9 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
+import Logbook from './pages/Logbook';
+import Hazard from './pages/Hazard';
+
 
 
 function App() {
@@ -22,6 +25,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/logbook" element={<Logbook />} />
+            <Route path="/hazard" element={<Hazard />} />
            
           </Routes>
         </main>

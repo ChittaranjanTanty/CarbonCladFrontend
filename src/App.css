@@ -13,7 +13,7 @@
 /* Main Content */
 .main-content {
   grid-area: main;
-  margin-top: 60px; /* Adjust for header height */
+  margin-top: 2px; /* Adjust for header height */
   padding: 20px;
   background-color: #f0f2f5;
   overflow-y: auto;

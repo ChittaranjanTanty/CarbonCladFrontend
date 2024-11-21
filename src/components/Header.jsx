@@ -9,6 +9,7 @@ function Header({ toggleSidebar }) {
         <BsJustify className="hamburger-icon" onClick={toggleSidebar} />
         <div className="logo">MyApp Logo</div>
       </div>
+      
     </header>
   );
 }
