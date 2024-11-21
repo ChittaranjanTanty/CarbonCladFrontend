@@ -1,0 +1,29 @@
+/* App.css */
+.app-container {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Sidebar on the left and main content takes the rest */
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Main Content */
+.main-content {
+  grid-area: main;
+  margin-top: 60px; /* Adjust for header height */
+  padding: 20px;
+  background-color: #f0f2f5;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease-in-out; /* Smooth transition for shifting content */
+}
+
+.sidebar-expanded .main-content {
+  margin-left: 250px; /* Shifts content to the right when sidebar is expanded */
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: 80px; /* Shifts less when sidebar is collapsed */
+}

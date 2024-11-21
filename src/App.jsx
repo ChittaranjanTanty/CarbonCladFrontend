@@ -1,24 +1,33 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import Abhay from './components/Abhay'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle)
-  }
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
 
   return (
-    <div className='grid-container'>
-      <Header OpenSidebar={OpenSidebar}/>
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-      <Abhay/>
-    </div>
-  )
+    <Router>
+      <div className={`app-container ${isSidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+        <Header toggleSidebar={toggleSidebar} />
+        <Sidebar isExpanded={isSidebarExpanded} />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+           
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
