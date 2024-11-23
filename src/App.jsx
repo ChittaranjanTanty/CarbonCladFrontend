@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Logbook from './pages/Logbook';
 import Hazard from './pages/Hazard';
+import Chatbot from './components/Chatbot';
 
 
 
@@ -30,6 +31,7 @@ function App() {
            
           </Routes>
         </main>
+        <Chatbot/>
       </div>
     </Router>
   );

@@ -14,14 +14,14 @@
 .main-content {
   grid-area: main;
   margin-top: 2px; /* Adjust for header height */
-  padding: 20px;
+  padding: 15px;
   background-color: #f0f2f5;
   overflow-y: auto;
   transition: margin-left 0.3s ease-in-out; /* Smooth transition for shifting content */
 }
 
 .sidebar-expanded .main-content {
-  margin-left: 250px; /* Shifts content to the right when sidebar is expanded */
+  margin-left: 230px; /* Shifts content to the right when sidebar is expanded */
 }
 
 .sidebar-collapsed .main-content {

@@ -1,15 +1,24 @@
 import React from 'react';
-import { BsJustify } from 'react-icons/bs';
+import { BsJustify, BsPersonCircle, BsExclamationTriangle } from 'react-icons/bs';
 import './Header.css';
 
 function Header({ toggleSidebar }) {
   return (
     <header className="header">
+      {/* Left Section: Logo and Hamburger Icon */}
       <div className="header-left">
+        
+        <div className="logo">
+          <img src="./carbonclad-logo.png" alt="Logo" />
+        </div>
         <BsJustify className="hamburger-icon" onClick={toggleSidebar} />
-        <div className="logo">MyApp Logo</div>
       </div>
-      
+
+      {/* Right Section: Notification and Profile Icons */}
+      <div className="header-right">
+        <BsExclamationTriangle className="icon" title="Notification" />
+        <BsPersonCircle className="icon" title="Profile" />
+      </div>
     </header>
   );
 }

@@ -27,19 +27,13 @@ function Sidebar({ isExpanded }) {
         <li className="sidebar-list-item">
           <Link to="/hazard">
             <BsFillPieChartFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">Hazard</span>}
+            {isExpanded && <span className="sidebar-text">Shift Summary</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
           <Link to="/settings">
             <BsFillGearFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">Report</span>}
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to="/settings">
-            <BsFillGearFill className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text"></span>}
+            {isExpanded && <span className="sidebar-text">SMP</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
