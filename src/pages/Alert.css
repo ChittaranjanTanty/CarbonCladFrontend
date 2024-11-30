@@ -1,0 +1,63 @@
+.alert-component {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .alert-component h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .hazard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .hazard-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .hazard-card.resolved {
+    background-color: #eafbea;
+  }
+  
+  .hazard-card.unresolved {
+    background-color: #fdecea;
+  }
+  
+  .hazard-info h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  
+  .hazard-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .toggle-button {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #1d6fa5;
+  }
+  

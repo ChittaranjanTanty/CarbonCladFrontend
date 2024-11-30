@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsJustify, BsPersonCircle, BsExclamationTriangle } from 'react-icons/bs';
+import { BsJustify, BsPersonCircle, BsBell } from 'react-icons/bs';
 import './Header.css';
 
 function Header({ toggleSidebar }) {
@@ -16,7 +16,7 @@ function Header({ toggleSidebar }) {
 
       {/* Right Section: Notification and Profile Icons */}
       <div className="header-right">
-        <BsExclamationTriangle className="icon" title="Notification" />
+        <BsBell className="icon" title="Notification" />
         <BsPersonCircle className="icon" title="Profile" />
       </div>
     </header>

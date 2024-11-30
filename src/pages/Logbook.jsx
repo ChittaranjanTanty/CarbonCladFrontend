@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Logbook.css';
+
+const socket = new WebSocket('ws://localhost:8080');
 
 function Logbook() {
   const [basicDetails, setBasicDetails] = useState({
-    name: '',
-    time: '',
+    supervisorName: '',
+    supervisorID: '',
+    inspectionTime: '',
     shift: 'Shift 1',
   });
 
@@ -12,72 +15,132 @@ function Logbook() {
     {
       methaneLevel: '',
       temperature: '',
+      humidity: '',
+      ventilationStatus: '',
       equipmentStatus: '',
+      personnelCount: '',
       incidents: '',
     },
   ]);
 
-  // Handle basic details change
+  // Handle real-time updates from WebSocket
+  useEffect(() => {
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      console.log('Received update:', data);
+      // Handle updates from the server
+      if (data.type === 'updateLogbook') {
+        setBasicDetails(data.basicDetails);
+        setEntries(data.entries);
+      }
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
+
+  // Handle changes to basic details and notify server
   const handleBasicDetailsChange = (event) => {
     const { name, value } = event.target;
-    setBasicDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
+    const updatedDetails = { ...basicDetails, [name]: value };
+    setBasicDetails(updatedDetails);
+
+    // Send update to server
+    socket.send(
+      JSON.stringify({
+        type: 'updateBasicDetails',
+        basicDetails: updatedDetails,
+      })
+    );
   };
 
-  // Handle entry changes
+  // Handle changes to entries and notify server
   const handleEntryChange = (index, event) => {
     const { name, value } = event.target;
     const updatedEntries = entries.map((entry, i) =>
       i === index ? { ...entry, [name]: value } : entry
     );
     setEntries(updatedEntries);
+
+    // Send update to server
+    socket.send(
+      JSON.stringify({
+        type: 'updateEntries',
+        entries: updatedEntries,
+      })
+    );
   };
 
-  // Add a new entry
   const addEntry = () => {
-    setEntries([
-      ...entries,
-      {
-        methaneLevel: '',
-        temperature: '',
-        equipmentStatus: '',
-        incidents: '',
-      },
-    ]);
+    const newEntry = {
+      methaneLevel: '',
+      temperature: '',
+      humidity: '',
+      ventilationStatus: '',
+      equipmentStatus: '',
+      personnelCount: '',
+      incidents: '',
+    };
+    setEntries([...entries, newEntry]);
+
+    // Notify server
+    socket.send(
+      JSON.stringify({
+        type: 'addEntry',
+        entry: newEntry,
+      })
+    );
   };
 
-  // Submit logbook data
   const handleSubmit = () => {
-    console.log('Submitting logbook data:', { basicDetails, entries });
-    alert('Logbook data saved!');
+    const logbookData = { basicDetails, entries };
+    console.log('Submitting logbook:', logbookData);
+
+    // Notify server
+    socket.send(
+      JSON.stringify({
+        type: 'submitLogbook',
+        data: logbookData,
+      })
+    );
+    alert('Logbook data submitted!');
   };
 
   return (
     <div className="logbook-container">
-      <h1>Coal Mine Logbook</h1>
+      <h1>Supervisor Statutory Logbook (Real-Time)</h1>
 
       {/* Basic Details Section */}
       <div className="basic-details">
         <h2>Basic Details</h2>
         <form>
           <div className="form-group">
-            <label>Name:</label>
+            <label>Supervisor Name:</label>
             <input
               type="text"
-              name="name"
-              value={basicDetails.name}
+              name="supervisorName"
+              value={basicDetails.supervisorName}
               onChange={handleBasicDetailsChange}
-              placeholder="Enter name"
+              placeholder="Enter supervisor name"
             />
           </div>
           <div className="form-group">
-            <label>Time:</label>
+            <label>Supervisor ID:</label>
+            <input
+              type="text"
+              name="supervisorID"
+              value={basicDetails.supervisorID}
+              onChange={handleBasicDetailsChange}
+              placeholder="Enter supervisor ID"
+            />
+          </div>
+          <div className="form-group">
+            <label>Inspection Time:</label>
             <input
               type="datetime-local"
-              name="time"
-              value={basicDetails.time}
+              name="inspectionTime"
+              value={basicDetails.inspectionTime}
               onChange={handleBasicDetailsChange}
             />
           </div>
@@ -96,50 +159,14 @@ function Logbook() {
         </form>
       </div>
 
-      {/* Logbook Entry Section */}
+      {/* Logbook Entries */}
       <div className="logbook-entries">
         <h2>Logbook Entries</h2>
         {entries.map((entry, index) => (
           <div key={index} className="entry">
             <h3>Entry {index + 1}</h3>
-            <div className="form-group">
-              <label>Methane Level (%):</label>
-              <input
-                type="number"
-                name="methaneLevel"
-                value={entry.methaneLevel}
-                onChange={(e) => handleEntryChange(index, e)}
-                placeholder="Enter methane level"
-              />
-            </div>
-            <div className="form-group">
-              <label>Temperature (°C):</label>
-              <input
-                type="number"
-                name="temperature"
-                value={entry.temperature}
-                onChange={(e) => handleEntryChange(index, e)}
-                placeholder="Enter temperature"
-              />
-            </div>
-            <div className="form-group">
-              <label>Equipment Status:</label>
-              <textarea
-                name="equipmentStatus"
-                value={entry.equipmentStatus}
-                onChange={(e) => handleEntryChange(index, e)}
-                placeholder="Enter equipment status"
-              />
-            </div>
-            <div className="form-group">
-              <label>Incidents:</label>
-              <textarea
-                name="incidents"
-                value={entry.incidents}
-                onChange={(e) => handleEntryChange(index, e)}
-                placeholder="Describe incidents (if any)"
-              />
-            </div>
+            {/* Entry Fields */}
+            {/* Add methane level, temperature, etc. */}
           </div>
         ))}
         <button onClick={addEntry} type="button" className="add-entry-btn">
@@ -147,18 +174,10 @@ function Logbook() {
         </button>
       </div>
 
-      {/* Submit Button */}
-      <div className="submit-section">
-        <button onClick={handleSubmit} className="submit-btn">
-          Save Logbook
-        </button>
-      </div>
-
-      {/* Preview Section */}
-      <div className="preview">
-        <h2>Live Preview</h2>
-        <pre>{JSON.stringify({ basicDetails, entries }, null, 2)}</pre>
-      </div>
+      {/* Submit Section */}
+      <button onClick={handleSubmit} className="submit-btn">
+        Save Logbook
+      </button>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import Logbook from './pages/Logbook';
 import Hazard from './pages/Hazard';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
+import Alert from './pages/Alert.jsx';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -79,6 +80,23 @@ function App() {
                   <Sidebar isExpanded={isSidebarExpanded} />
                   <main className="main-content">
                     <Hazard />
+                  </main>
+                  <Chatbot />
+                </div>
+              }
+            />
+          }
+        />
+         <Route
+          path="/alert"
+          element={
+            <ProtectedRoute
+              element={
+                <div className={`app-container ${isSidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+                  <Header toggleSidebar={toggleSidebar} />
+                  <Sidebar isExpanded={isSidebarExpanded} />
+                  <main className="main-content">
+                    <Alert />
                   </main>
                   <Chatbot />
                 </div>

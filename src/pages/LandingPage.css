@@ -1,37 +1,127 @@
+/* General Landing Page Styles */
 .landing-page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: #34495e;
+    background: linear-gradient(to bottom right, #34495e, #2c3e50);
     color: #ffffff;
-    text-align: center;
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
   }
   
-  .landing-page h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.6); /* Transparent navbar */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
   
-  .landing-page p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4bc0c0;
   }
   
-  .login-button {
-    background-color: #4bc0c0;
+  .navbar-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar-link {
+    background: none;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
     font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .navbar-link:hover {
+    color: #4bc0c0;
+  }
+  
+  .navbar-button {
+    background-color: #4bc0c0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar-button:hover {
+    background-color: #36a2a2;
+  }
+  
+  /* Main Content */
+  .landing-content {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+  }
+  
+  .landing-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .landing-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .landing-text {
+    flex: 1;
+    padding-left: 40px;
+  }
+  
+  .landing-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .landing-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    background-color: #4bc0c0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
-  .login-button:hover {
+  .cta-button:hover {
     background-color: #36a2a2;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .landing-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .landing-text {
+      padding-left: 0;
+    }
+  
+    .landing-image img {
+      width: 80%;
+    }
   }
   

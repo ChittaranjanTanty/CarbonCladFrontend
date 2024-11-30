@@ -15,7 +15,7 @@
 .header-left {
   display: flex; /* Use flex to align logo and hamburger icon horizontally */
   align-items: center;
-  gap: 50px; /* Space between logo and hamburger icon */
+  gap: 40px; /* Space between logo and hamburger icon */
 }
 
 .logo {
