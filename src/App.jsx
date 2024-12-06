@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import ReportGeneration from './components/ReportGeneration.jsx';
 import Dashboard from './pages/Dashboard';
 import Logbook from './pages/Logbook';
 import Hazard from './pages/Hazard';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import Alert from './pages/Alert.jsx';
+import Checklist from './pages/Checklist.jsx';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -64,13 +65,47 @@ function App() {
                   <main className="main-content">
                     <Logbook />
                   </main>
-                  <Chatbot />
+                  
                 </div>
               }
             />
           }
         />
         <Route
+          path="/report"
+          element={
+            <ProtectedRoute
+              element={
+                <div className={`app-container ${isSidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+                  <Header toggleSidebar={toggleSidebar} />
+                  <Sidebar isExpanded={isSidebarExpanded} />
+                  <main className="main-content">
+                    <ReportGeneration/>
+                  </main>
+                 
+                </div>
+              }
+            />
+          }
+        />
+         <Route
+          path="/smp"
+          element={
+            <ProtectedRoute
+              element={
+                <div className={`app-container ${isSidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+                  <Header toggleSidebar={toggleSidebar} />
+                  <Sidebar isExpanded={isSidebarExpanded} />
+                  <main className="main-content">
+                    <Checklist />
+                  </main>
+                 
+                </div>
+              }
+            />
+          }
+        />
+         <Route
           path="/hazard"
           element={
             <ProtectedRoute
@@ -80,23 +115,6 @@ function App() {
                   <Sidebar isExpanded={isSidebarExpanded} />
                   <main className="main-content">
                     <Hazard />
-                  </main>
-                  <Chatbot />
-                </div>
-              }
-            />
-          }
-        />
-         <Route
-          path="/alert"
-          element={
-            <ProtectedRoute
-              element={
-                <div className={`app-container ${isSidebarExpanded ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
-                  <Header toggleSidebar={toggleSidebar} />
-                  <Sidebar isExpanded={isSidebarExpanded} />
-                  <main className="main-content">
-                    <Alert />
                   </main>
                   <Chatbot />
                 </div>

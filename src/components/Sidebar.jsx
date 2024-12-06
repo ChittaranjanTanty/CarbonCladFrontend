@@ -29,21 +29,21 @@ function Sidebar({ isExpanded }) {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/alert">
+          <Link to="/report">
             <BsExclamationTriangle className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">SAFETY ALERT</span>}
+            {isExpanded && <span className="sidebar-text">REPORT</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/settings">
+          <Link to="/smp">
             <BsExclamationOctagon className="sidebar-icon" />
             {isExpanded && <span className="sidebar-text">SMP</span>}
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/settings">
+          <Link to="/hazard">
             <BsFileText className="sidebar-icon" />
-            {isExpanded && <span className="sidebar-text">REPORTS</span>}
+            {isExpanded && <span className="sidebar-text">Hazard </span>}
           </Link>
         </li>
         <li className="sidebar-list-item">

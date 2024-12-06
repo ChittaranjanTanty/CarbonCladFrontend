@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Alert.css';
 
-const AlertComponent = () => {
+const Checklist = () => {
   const [hazards, setHazards] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -65,4 +65,4 @@ const AlertComponent = () => {
   );
 };
 
-export default AlertComponent;
+export default Checklist;

@@ -1,55 +1,158 @@
+/* General container styling */
 .logbook-container {
   font-family: Arial, sans-serif;
   padding: 20px;
-  max-width: 900px;
-  margin: auto;
   background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Headings */
 h1, h2 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.form-group {
-  margin-bottom: 15px;
+/* Row layout for form inputs */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
+.row .form-group {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* Form input labels */
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #555;
 }
 
-input, textarea, select {
+/* Input fields, dropdowns, and buttons */
+input, select, button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Add Entry and Submit buttons */
+.add-entry-btn, .submit-btn {
+  display: block;
+  margin: 20px auto;
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/* Table for safety observations */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #333;
+}
+
+table td input {
+  width: calc(100% - 20px);
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.add-entry-btn, .submit-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+/* Fetch Geolocation button styling */
+button[type="button"] {
+  width: auto;
+  margin-top: 5px;
+  background-color: #28a745;
+}
+
+button[type="button"]:hover {
+  background-color: #218838;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row .form-group {
+    margin: 0 0 20px 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+.red-flag-section {
+  margin-top: 20px;
+}
+
+.red-flag-section table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.red-flag-section table th,
+.red-flag-section table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.red-flag-form input,
+.red-flag-form select {
+  margin: 5px;
+  padding: 8px;
+}
+
+.add-red-flag-btn {
+  padding: 8px 12px;
+  background-color: #dc3545;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.add-entry-btn:hover, .submit-btn:hover {
-  background-color: #0056b3;
+.add-red-flag-btn:hover {
+  background-color: #c82333;
 }
 
-.preview {
-  margin-top: 20px;
-  background: #e9ecef;
-  padding: 15px;
-  border-radius: 4px;
-  font-size: 0.9em;
-  white-space: pre-wrap;
-}
